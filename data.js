@@ -1,0 +1,268 @@
+window.PORTFOLIO_DATA = {
+  featuredProjects: [
+    {
+      tag: "Recent Addition",
+      title: "Portfolio v2",
+      description:
+        "A refreshed personal platform focused on clear storytelling, trust, and measurable outcomes.",
+    },
+    {
+      tag: "Recent Addition",
+      title: "Automation Toolkit",
+      description:
+        "Lightweight scripts and workflows to remove repetitive tasks from daily operations.",
+    },
+    {
+      tag: "Minor Project",
+      title: "Learning Lab",
+      description:
+        "Ongoing technical experiments for frontend architecture and prompt-driven development.",
+    },
+  ],
+  projectGroups: [
+    {
+      title: "Internships",
+      open: true,
+      rows: [
+        {
+          title: "Apple",
+          year: "2025",
+          description: "Developed productionized platform that forecasts and relays worldwide operational prototype allocations over multiple business lines.",
+          link: "#",
+        },
+        {
+          title: "Cisco",
+          year: "2024",
+          description: "Engineered distributed systems to enhance Silicon One platform chips.",
+          link: "#",
+        },
+        {
+          title: "Mayo Clinic",
+          year: "2024",
+          description: "Conducted user research and spearheaded transformer and classification architecture for lab test cost-benefit analysis.",
+          link: "#",
+        },
+        {
+          title: "Climate.xyz",
+          year: "2023",
+          description: "Trained language models on multimodal data for optimized user journies through energy investment.",
+          link: "#",
+        },
+        {
+          title: "Phuc Laboratories",
+          year: "2023",
+          description: "Innovated novel statistical modeling for CV laser water waste particle identification.",
+          link: "#",
+        },
+        {
+          title: "Clark Scholar",
+          year: "2021",
+          description: "Developed research on CNN architectures to extract best inputs for CT lung scans.",
+          link: "#",
+        },
+        {
+          title: "LPBI",
+          year: "2020",
+          description: "Founded company's NLP semantic analysis and hypergraph modeling over hundreds of scientific texts.",
+          link: "#",
+        },
+        {
+          title: "CHEF Software",
+          year: "2020",
+          description: "Learned the fundamentals of DevOps, testing, and software QA monitoring.",
+          link: "#",
+        },
+      ],
+    },
+    {
+      title: "Major Projects",
+      open: false,
+      rows: [
+        {
+          title: "Red Collar",
+          year: "2023",
+          description: "Full Stack web application connecting animal shelters to reduce over-capacity.",
+          link: "https://github.com/Madison-Davis/MajorProject-RedCollar",
+        },
+        {
+          title: "SANCCOB",
+          year: "2021",
+          description: "Educational platform teaching users the process of rescuing and rehabilitating African penguins.",
+          link: "#",
+        },
+        {
+          title: "Shedd",
+          year: "2016",
+          description: "Educational platform of Shedd Aquarium, involving maritime model rigging/animation and persistent data-store systems.",
+          link: "#",
+        },
+      ],
+    },
+    {
+      title: "Coursework",
+      open: false,
+      rows: [
+        {
+          title: "CS 2411",
+          year: "2026",
+          description: "Computer Architecture: ISA, SIMD, Performance Speculation, Scoreboarding, Tomasulo, ArchEval.",
+          link: "#",
+        },
+        {
+          title: "CS 2411",
+          year: "2026",
+          description: "High Performance Computing: parallelization, OpenMP, MPI, CUDA, vectorization.",
+          link: "#",
+        },
+        {
+          title: "CS 2420",
+          year: "2025",
+          description: "Computing at Scale: Transformers, FPUs, GPUs/TPUs, ViTs, GANs, DINO, diffusion, contrastive learning, knowledge distillation.",
+          link: "#",
+        },
+        {
+          title: "CS 2630",
+          year: "2025",
+          description: "System Security: stack protocols, ROP, TLS, OCSP, Tor, SGX, and more.",
+          link: "#",
+        },
+        {
+          title: "CS 2880",
+          year: "2023",
+          description: "AI for Social Impact: developed divisive hierarchical clustering for cheetah breeding.",
+          link: "#",
+        },
+        {
+          title: "CS 1840",
+          year: "2024",
+          description: "Reinforcement Learning: Markov, REINFORCE, PPO, NPG, imitation learning",
+          link: "#",
+        },
+        {
+          title: "CS 1530",
+          year: "2023",
+          description: "Compilers: produced in-house Oat V153 compiler with parsing, checking, IR, linkage/loading.",
+          link: "#",
+        },
+        {
+          title: "CS 1410",
+          year: "2023",
+          description: "Computer Hardware: MIPS NEXYS-A7 FPGA with arithmetic and flow control.",
+          link: "https://github.com/Madison-Davis/Courses-CS1410-ComputerHardware",
+        },
+        {
+          title: "CS 0061",
+          year: "2022",
+          description: "Computer Systems: Memory, Assembly, Kernel, Pipelines, and Shell",
+          link: "#",
+        },
+        {
+          title: "PHYS 70",
+          year: "2025",
+          description: "Digital Fabrication: metalwork, soldering, lasers, water jets, wireless control, CNC mill, CAD, PCB production.",
+          link: "#",
+        },
+        {
+          title: "ECON 2726",
+          year: "2026",
+          description: "Empirical Innovation: PhD course on spillovers, private equity, VC, and entrepreneurial innovation.",
+          link: "#",
+        },
+        {
+          title: "ECON 1640",
+          year: "2025",
+          description: "Industrial Organization: vertical/horizontal mergers, durable goods, non-linear pricing, product differentation/discrimination, bundling",
+          link: "#",
+        },
+        {
+          title: "ECON 1644",
+          year: "2024",
+          description: "Market Power: elasticity, market structure, monopoly, bertrand, stackelberg, cournot, collusion, network platforms",
+          link: "#",
+        },
+        {
+          title: "ECON 1745",
+          year: "2024",
+          description: "Corporate Finance: DCF valuation, ROE decomposition, asset sheet, NPV/IRR, liquidity/solvency/turnover ratios",
+          link: "#",
+        },
+        {
+          title: "ECON 1123",
+          year: "2024",
+          description: "Econometrics: t-test/p-value, f-test, logit modeling, OLS, IV, OVB, lags, ridge/lasso regression,",
+          link: "#",
+        },
+        {
+          title: "ECON 1010",
+          year: "2023",
+          description: "Microeconomics: production/utility/cost/tech functions, Cobb Douglass, AC/MC, slutsky decomposition",
+          link: "#",
+        },
+        {
+          title: "STAT 1100",
+          year: "2023",
+          description: "Statistics: PDF/CDF, Bayesian rules, moments, order statistics, LNN/CLT, multimodal/Gaussian/exponential/Poisson",
+          link: "#",
+        },
+        {
+          title: "MATH 21B",
+          year: "2022",
+          description: "Linear Algebra: eigenvalue decomposition, eigenvectors, SVD, matrix norms, linear systems",
+          link: "#",
+        },
+        
+      ],
+    },
+  ],
+  publications: [
+    {
+      title: "Adaptive Certificate Prefetching",
+      summary: "Reduction of OSTP stapling soft-fails via dynamic traffic prediction.",
+      pdf: "assets/adaptive-certificate.pdf",
+      topic: "systems",
+    },
+    {
+      title: "SEDS HUCSat Design Dissertation",
+      summary: "Capstone graduate thesis defending CubeSAT software design.",
+      pdf: "assets/seds.pdf",
+      topic: "systems",
+    },
+    {
+      title: "Compositional Diffusion Modeling",
+      summary: "1B conditional diffusion models, without textual topic tuning, offer stable improvements over joint baselines.",
+      pdf: "assets/compositional-diffusion.pdf",
+      topic: "AI/RL",
+    },
+    {
+      title: "Sampler Conditioned Diffusion",
+      summary: "Study of whether diffusion, conditioned on textual domain embedding guidance, can outperform autoregression.",
+      pdf: "assets/compositional-diffusion.pdf",
+      topic: "AI/RL",
+    },
+    {
+      title: "Tiered Prioritized Replay Buffer",
+      summary: "For RL experiences, quantize less important transitions in replay buffers to improve sample quantity.",
+      pdf: "assets/tiered-replay-buffer.pdf",
+      topic: "AI/RL",
+    },
+    {
+      title: "Modeling Crystalline Structure with NPG",
+      summary: "Determining optimial NPG, PPG, or REINFORCE methodology for complex crystalline energy structures.",
+      pdf: "assets/crystalline.pdf",
+      topic: "AI/RL",
+    },
+    {
+      title: "Survey on AI Energy Grid Optimization",
+      summary: "Focus on smart storage, energy distribution, demand, maintenance, and security.",
+      pdf: "assets/smart-grid-optimization.pdf",
+      topic: "AI/RL",
+    },
+    {
+      title: "CHEETAH: Optimized Breeding Program For Genetic Bottlenecks",
+      summary: "Introduces divisive hierarhical clustering to find optimal breeding pairs in captive cheetah populations.",
+      pdf: "assets/cheetah-genetics.pdf",
+      topic: "AI/RL",
+    },
+    
+  ],
+};

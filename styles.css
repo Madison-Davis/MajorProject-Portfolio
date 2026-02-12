@@ -5,7 +5,7 @@
   /* Color system */
   --color-bg: #000000;
   --color-bg-elevated: #1b1b1b;
-  --color-surface: #212121;
+  --color-surface: #0c0c0c;
   --color-surface-soft: #272727;
   --color-border: #363636;
   --color-text: #f3f5f8;
@@ -326,6 +326,7 @@ p {
 }
 
 .accordion-item {
+  margin-top: 20px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-bg-elevated);
@@ -409,8 +410,7 @@ p {
 .pub-slider {
   position: relative;
   overflow: hidden;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
+  
   background: var(--color-bg);
   padding: 1rem 0;
 }
@@ -459,24 +459,17 @@ p {
   border-color: #7a7a7a;
 }
 
-.paper-icon {
-  width: 44px;
-  height: 56px;
-  border: 1px solid #7e7e7e;
-  border-radius: 6px;
-  background: linear-gradient(180deg, #f2f2f2 0%, #d7d7d7 100%);
-  position: relative;
+.publication-icon {
+  width: 100px;
+  height: 200px;
+  background-image: url("assets/publication-icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.paper-icon::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 14px;
-  height: 14px;
-  background: linear-gradient(135deg, #f2f2f2 50%, #bebebe 50%);
-  border-top-right-radius: 5px;
+.publication-icon::after {
+  content: none;
 }
 
 .pub-caption {
@@ -506,15 +499,18 @@ p {
    Link Tiles
    ========================================================================== */
 .link-list {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.8rem;
+  width: 100%;
 }
 
 .link-item {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-width: 150px;
   padding: 0.9rem 1rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
@@ -540,6 +536,81 @@ p {
 .site-footer p {
   font-size: 0.92rem;
   color: var(--color-text-dim);
+}
+
+/* ==========================================================================
+   PDF Modal
+   ========================================================================== */
+body.modal-open {
+  overflow: hidden;
+}
+
+.pdf-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 60;
+}
+
+.pdf-modal.is-open {
+  display: block;
+}
+
+.pdf-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.pdf-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(92vw, 980px);
+  height: min(88vh, 760px);
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #111111;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.pdf-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.95rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+}
+
+.pdf-modal-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.pdf-close {
+  border: 1px solid var(--color-border);
+  background: #1e1e1e;
+  color: var(--color-text);
+  border-radius: 8px;
+  padding: 0.35rem 0.65rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+.pdf-close:hover {
+  border-color: #777777;
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #1a1a1a;
 }
 
 /* ==========================================================================
@@ -585,8 +656,8 @@ p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .link-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .link-item {
+    min-width: 140px;
   }
 }
 
@@ -609,9 +680,12 @@ p {
   }
 
   .card-grid.two,
-  .card-grid.three,
-  .link-list {
+  .card-grid.three {
     grid-template-columns: 1fr;
+  }
+
+  .link-item {
+    width: min(100%, 280px);
   }
 
   .pub-item {
@@ -626,5 +700,10 @@ p {
   .accordion-table th,
   .accordion-table td {
     padding: 0.5rem 0.3rem;
+  }
+
+  .pdf-modal-content {
+    width: min(96vw, 980px);
+    height: min(88vh, 760px);
   }
 }
