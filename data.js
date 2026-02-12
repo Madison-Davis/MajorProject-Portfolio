@@ -1,22 +1,31 @@
 window.PORTFOLIO_DATA = {
   featuredProjects: [
     {
-      tag: "Recent Addition",
+      highlightLabel: "Highlighted Project",
       title: "Portfolio v2",
       description:
         "A refreshed personal platform focused on clear storytelling, trust, and measurable outcomes.",
+      image: "assets/images/highlight1.jpeg",
+      link: "#",
+      linkLabel: "View Project",
     },
     {
-      tag: "Recent Addition",
+      highlightLabel: "Highlighted Project",
       title: "Automation Toolkit",
       description:
         "Lightweight scripts and workflows to remove repetitive tasks from daily operations.",
+      image: "assets/images/highlight2.jpg",
+      link: "#",
+      linkLabel: "View Project",
     },
     {
-      tag: "Minor Project",
+      highlightLabel: "Highlighted Project",
       title: "Learning Lab",
       description:
         "Ongoing technical experiments for frontend architecture and prompt-driven development.",
+      image: "assets/images/highlight3.png",
+      link: "#",
+      linkLabel: "View Project",
     },
   ],
   projectGroups: [

@@ -54,23 +54,26 @@
 
     <section id="overview" class="section reveal">
       <div class="container">
-        <h2 class="section-title">High-Level Overview</h2>
+        <h2 class="section-title">FROM IDEATION, TO INNOVATION</h2>
         <p class="section-intro">
           I lead projects from concept to launch, blending design systems, software
           engineering, and business goals into clear deliverables.
         </p>
         <div class="card-grid three">
-          <article class="card reveal">
-            <h3>Strategy</h3>
-            <p>Research, framing, and prioritization to define projects that matter.</p>
+          <article class="card overview-card reveal">
+            <p class="overview-meta"><span class="overview-line" aria-hidden="true"></span>01</p>
+            <h3>BUSINESS ECONOMICS</h3>
+            <p>market and customer segmentation, competitive analysis, product design, and marketing strategy.</p>
           </article>
-          <article class="card reveal">
-            <h3>Build</h3>
-            <p>Execution across frontend, automation, and AI-enabled workflows.</p>
+          <article class="card overview-card reveal">
+            <p class="overview-meta"><span class="overview-line" aria-hidden="true"></span>02</p>
+            <h3>ARTIFICIAL INTELLIGENCE</h3>
+            <p>machine learning, reinforcement learning, deep learning, natural language, and fuzzy logic</p>
           </article>
-          <article class="card reveal">
-            <h3>Iteration</h3>
-            <p>Measure outcomes, refine quickly, and improve with every release.</p>
+          <article class="card overview-card reveal">
+            <p class="overview-meta"><span class="overview-line" aria-hidden="true"></span>03</p>
+            <h3>COMPUTER ENGINEERING</h3>
+            <p>computer hardware, architecture, distributed systems, fabrication</p>
           </article>
         </div>
       </div>
@@ -104,7 +107,7 @@
         <div id="project-cards" class="card-grid three"></div>
 
         <div class="project-accordion reveal">
-          <h3 class="accordion-title">Full List: Internships, Projects, and Milestones</h3>
+          <p class="section-intro">full List: internships, projects, and coursework</p>
           <div id="project-accordion-list"></div>
         </div>
       </div>
@@ -171,10 +174,19 @@
         projectCardsEl.innerHTML = data.featuredProjects
           .map(
             (project) => `
-              <article class="project-card reveal">
-                <p class="project-tag">${project.tag}</p>
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
+              <article class="project-card highlighted-card reveal">
+                <div class="highlight-inner">
+                  <div class="highlight-image-card">
+                    <img src="${project.image || "assets/images/highlight1.jpeg"}" alt="${project.title}" loading="lazy">
+                  </div>
+                  <div class="highlight-text-card">
+                    <div class="highlight-title-row">
+                      <h3>${project.title}</h3>
+                      <a class="highlight-link" href="${project.link || "#"}" aria-label="View ${project.title}">↗</a>
+                    </div>
+                    <p>${project.description}</p>
+                  </div>
+                </div>
               </article>
             `
           )
