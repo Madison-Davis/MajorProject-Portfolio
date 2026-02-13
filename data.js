@@ -5,7 +5,6 @@ window.PORTFOLIO_DATA = {
       description:
         "2025",
       image: "assets/images/highlight1.png",
-      link: "assets/research/sampler-conditioned-diffusion.pdf",
     },
     {
       title: "PCRB Tiered Prioritized Replay Buffer",
@@ -22,24 +21,21 @@ window.PORTFOLIO_DATA = {
       link: "assets/research/crystalline.pdf",
     },
   ],
-  highlightedProjects: [
+  featuredVideos: [
     {
-      title: "SEDS",
-      description: "Making space exploration in April 2026.",
-      video: "assets/images/video1.mp4",
-      link: "#",
+      video: "assets/videos/video1.mp4",
+      title: "CUBESAT",
+      description: "CLSI NASA program launch for April 2026.",
     },
     {
-      title: "Phuc Laboratories",
-      description: "Water waste particle identification.",
-      video: "assets/images/video2.mp4",
-      link: "#",
+      video: "assets/videos/video2.mp4",
+      title: "Vision Valve",
+      description: "multimodal particle image-recognition in water filtration at 4x throughput compared to industry models",
     },
     {
-      title: "CHEETAH",
-      description: "Optimized Breeding Program For Genetic Bottlenecks",
-      video: "assets/images/video3.mp4",
-      link: "#",
+      video: "assets/videos/video3.mp4",
+      title: "CHEETAH: ACINONYX GENETICS",
+      description: "Optimized Breeding Program For Genetic Bottlenecks.",
     },
   ],
   projectGroups: [

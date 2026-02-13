@@ -89,8 +89,8 @@
               </figure>
             </div>
             <figcaption class="slideshow-caption">
-              <h3>Sample Project Title</h3>
-              <p>Placeholder description text showing where your short project summary will appear.</p>
+              <h3>CHEETAH: ACINONYX GENETICS</h3>
+              <p>Optimized Breeding Program For Genetic Bottlenecks.</p>
             </figcaption>
             <button class="slideshow-arrow slideshow-arrow-next" type="button" aria-label="Next slide">›</button>
           </div>
@@ -140,15 +140,12 @@
     </section>
   </div>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2026 Compaulo. All rights reserved.</p>
-    </div>
   </footer>
   <script src="data.js"></script>
   <script>
     const data = window.PORTFOLIO_DATA || {
       featuredProjects: [],
+      featuredVideos: [],
       projectGroups: [],
       publications: [],
     };
@@ -161,6 +158,8 @@
     const slideshowTrack = document.querySelector(".slideshow-track");
     const slideshowPrev = document.querySelector(".slideshow-arrow-prev");
     const slideshowNext = document.querySelector(".slideshow-arrow-next");
+    const slideshowCaptionTitle = document.querySelector(".slideshow-caption h3");
+    const slideshowCaptionDescription = document.querySelector(".slideshow-caption p");
     const pdfModal = document.querySelector("#pdf-modal");
     const pdfFrame = document.querySelector("#pdf-frame");
     const pdfClose = document.querySelector("#pdf-modal-close");
@@ -378,22 +377,61 @@
     revealElements.forEach((el) => revealObserver.observe(el));
 
     if (slideshowTrack && slideshowPrev && slideshowNext) {
-      const slides = Array.from(slideshowTrack.querySelectorAll(".slideshow-slide"));
-      let currentSlide = 0;
+      const originalSlides = Array.from(slideshowTrack.querySelectorAll(".slideshow-slide"));
+      if (originalSlides.length > 1) {
+        const featuredVideos = Array.isArray(data.featuredVideos) ? data.featuredVideos : [];
 
-      const renderSlide = () => {
-        slideshowTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-      };
+        const updateCaption = (trackIndex) => {
+          if (!slideshowCaptionTitle || !slideshowCaptionDescription) return;
+          const realIndex = ((trackIndex - 1) % originalSlides.length + originalSlides.length) % originalSlides.length;
+          const item = featuredVideos[realIndex];
+          slideshowCaptionTitle.textContent = item?.title || "Highlighted Project";
+          slideshowCaptionDescription.textContent = item?.description || "";
+        };
 
-      slideshowPrev.addEventListener("click", () => {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        renderSlide();
-      });
+        const firstClone = originalSlides[0].cloneNode(true);
+        const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
+        firstClone.dataset.clone = "first";
+        lastClone.dataset.clone = "last";
+        slideshowTrack.appendChild(firstClone);
+        slideshowTrack.prepend(lastClone);
 
-      slideshowNext.addEventListener("click", () => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        renderSlide();
-      });
+        let currentIndex = 1;
+        let isAnimating = false;
+
+        const jumpTo = (index, animated = true) => {
+          slideshowTrack.style.transition = animated ? "transform 420ms ease" : "none";
+          slideshowTrack.style.transform = `translateX(-${index * 100}%)`;
+          updateCaption(index);
+        };
+
+        jumpTo(currentIndex, false);
+        requestAnimationFrame(() => {
+          slideshowTrack.style.transition = "transform 420ms ease";
+        });
+
+        const move = (direction) => {
+          if (isAnimating) return;
+          isAnimating = true;
+          currentIndex += direction;
+          jumpTo(currentIndex, true);
+        };
+
+        slideshowPrev.addEventListener("click", () => move(-1));
+        slideshowNext.addEventListener("click", () => move(1));
+
+        slideshowTrack.addEventListener("transitionend", () => {
+          const totalWithClones = originalSlides.length + 2;
+          if (currentIndex === 0) {
+            currentIndex = originalSlides.length;
+            jumpTo(currentIndex, false);
+          } else if (currentIndex === totalWithClones - 1) {
+            currentIndex = 1;
+            jumpTo(currentIndex, false);
+          }
+          isAnimating = false;
+        });
+      }
     }
 
     const bindAccordionInteractions = () => {
