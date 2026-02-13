@@ -192,7 +192,10 @@
       const groups = data.projectGroups || [];
       if (!projectAccordionEl || groups.length === 0) return;
 
-      let activeGroupIndex = null;
+      const defaultProjectsIndex = groups.findIndex(
+        (group) => String(group.title || "").trim().toUpperCase() === "PROJECTS"
+      );
+      let activeGroupIndex = defaultProjectsIndex >= 0 ? defaultProjectsIndex : 0;
 
       const renderGroupButtons = () => {
         if (!projectGroupTabsEl) return;
