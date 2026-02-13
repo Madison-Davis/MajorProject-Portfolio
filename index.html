@@ -14,23 +14,15 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="#top">COMPAULO</a>
-      <nav aria-label="Primary navigation">
-        <ul class="nav-list">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#links">Links</a></li>
-        </ul>
-      </nav>
+      
+      
     </div>
   </header>
 
   <main id="top">
     <section id="home" class="hero section reveal">
       <div class="container hero-grid">
-        <div class="reveal">
+        <div class="reveal hero-copy">
           <p class="kicker">HELLO!</p>
           <h1>I'M MADISON DAVIS</h1>
           <p class="lead">
@@ -42,13 +34,6 @@
             <a class="btn ghost" href="#links">Important Links</a>
           </div>
         </div>
-        <aside class="hero-note reveal">
-          <h2>Compaulo Learn v2</h2>
-          <p>
-            This page captures my current work and experiments across web, AI tools,
-            and startup-style execution.
-          </p>
-        </aside>
       </div>
     </section>
 
@@ -79,35 +64,39 @@
       </div>
     </section>
 
-    <section class="section alt reveal">
-      <div class="container">
-        <h2 class="section-title">FROM IDEATION TO INNOVATION</h2>
-        <div class="card-grid two">
-          <article class="card reveal">
-            <h3>Ideation</h3>
-            <p>
-              Turning rough ideas into validated concepts with roadmaps and technical
-              plans.
-            </p>
-          </article>
-          <article class="card reveal">
-            <h3>Innovation</h3>
-            <p>
-              Shipping solutions that are usable, scalable, and aligned to real goals.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section id="projects" class="section reveal">
       <div class="container">
-        <h2 class="section-title">Projects</h2>
-        <p class="section-intro">Recent additions and selected builds.</p>
-        <div id="project-cards" class="card-grid three"></div>
+        <h2 class="section-title">PROJECTS</h2>
+        <p class="section-intro">Full list: internships, projects, and coursework.</p>
+        <div class="project-slideshow reveal" aria-label="Project media slideshow">
+          <div class="slideshow-viewport">
+            <button class="slideshow-arrow slideshow-arrow-prev" type="button" aria-label="Previous slide">‹</button>
+            <div class="slideshow-track">
+              <figure class="slideshow-slide">
+                <video autoplay muted loop playsinline preload="metadata" aria-label="Project placeholder video 1">
+                  <source src="assets/videos/video1.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure class="slideshow-slide">
+                <video autoplay muted loop playsinline preload="metadata" aria-label="Project placeholder video 1">
+                  <source src="assets/videos/video2.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <figure class="slideshow-slide">
+                <video autoplay muted loop playsinline preload="metadata" aria-label="Project placeholder video 1">
+                  <source src="assets/videos/video3.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+            <figcaption class="slideshow-caption">
+              <h3>Sample Project Title</h3>
+              <p>Placeholder description text showing where your short project summary will appear.</p>
+            </figcaption>
+            <button class="slideshow-arrow slideshow-arrow-next" type="button" aria-label="Next slide">›</button>
+          </div>
+        </div>
 
         <div class="project-accordion reveal">
-          <p class="section-intro">full List: internships, projects, and coursework</p>
           <div id="project-accordion-list"></div>
         </div>
       </div>
@@ -115,12 +104,14 @@
 
     <section id="publications" class="section alt reveal">
       <div class="container">
-        <h2 class="section-title">Publications</h2>
+        <h2 class="section-title">PUBLICATIONS</h2>
         <p class="section-intro">
-          selection of papers, notes, and writeups.  hover to pause and click to read.
+          selection of papers, notes, and writeups.
         </p>
-        <div class="pub-slider reveal">
-          <div id="pub-track" class="pub-track"></div>
+        <div id="project-cards" class="card-grid three"></div>
+
+        <div class="project-accordion reveal">
+          <div id="publication-accordion-list"></div>
         </div>
       </div>
     </section>
@@ -163,7 +154,10 @@
 
     const projectCardsEl = document.querySelector("#project-cards");
     const projectAccordionEl = document.querySelector("#project-accordion-list");
-    const pubTrackEl = document.querySelector("#pub-track");
+    const publicationAccordionEl = document.querySelector("#publication-accordion-list");
+    const slideshowTrack = document.querySelector(".slideshow-track");
+    const slideshowPrev = document.querySelector(".slideshow-arrow-prev");
+    const slideshowNext = document.querySelector(".slideshow-arrow-next");
     const pdfModal = document.querySelector("#pdf-modal");
     const pdfFrame = document.querySelector("#pdf-frame");
     const pdfClose = document.querySelector("#pdf-modal-close");
@@ -237,23 +231,44 @@
     };
 
     const renderPublications = () => {
-      if (!pubTrackEl) return;
-      const slides = [...data.publications, ...data.publications];
-      pubTrackEl.innerHTML = slides
-        .map(
-          (publication, idx) => `
-            <article class="pub-item ${publication.pdf || publication.link ? "has-pdf" : ""}"
-              data-pdf="${publication.pdf || publication.link || ""}"
-              data-title="${publication.title}"
-              ${idx >= data.publications.length ? ' aria-hidden="true"' : ""}>
-              <div class="publication-icon" aria-hidden="true"></div>
-              <p class="pub-caption">${publication.title}</p>
-              <p class="pub-topic">${publication.topic || "Publication"}</p>
-              <p class="pub-more">${publication.summary}</p>
-            </article>
-          `
-        )
-        .join("");
+      if (!publicationAccordionEl) return;
+      publicationAccordionEl.innerHTML = `
+        <article class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">
+            All Publications
+          </button>
+          <div class="accordion-panel">
+            <div class="accordion-panel-inner">
+              <table class="accordion-table">
+                <thead>
+                  <tr>
+                    <th>Genre</th>
+                    <th>Title</th>
+                    <th>Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${data.publications
+                    .map(
+                      (publication) => `
+                        <tr>
+                          <td>${publication.topic || "Publication"}</td>
+                          <td>${publication.title}</td>
+                          <td>
+                            ${publication.pdf || publication.link
+                              ? `<a class="publication-open" href="#" data-pdf="${publication.pdf || publication.link || "#"}" data-title="${publication.title}">Link</a>`
+                              : "-"}
+                          </td>
+                        </tr>
+                      `
+                    )
+                    .join("")}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+      `;
     };
 
     renderProjects();
@@ -276,15 +291,15 @@
       pdfFrame.src = "";
     };
 
-    if (pubTrackEl) {
-      pubTrackEl.addEventListener("click", (event) => {
-        const item = event.target.closest(".pub-item.has-pdf");
-        if (!item) return;
-        const pdfPath = item.dataset.pdf;
-        if (!pdfPath || pdfPath === "#") return;
-        openPdfModal(pdfPath, item.dataset.title);
-      });
-    }
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Element)) return;
+      const link = event.target.closest(".publication-open");
+      if (!link) return;
+      event.preventDefault();
+      const pdfPath = link.dataset.pdf;
+      if (!pdfPath || pdfPath === "#") return;
+      openPdfModal(pdfPath, link.dataset.title);
+    });
 
     if (pdfClose) {
       pdfClose.addEventListener("click", closePdfModal);
@@ -321,43 +336,23 @@
 
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    const slider = document.querySelector(".pub-slider");
-    const track = document.querySelector(".pub-track");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (slideshowTrack && slideshowPrev && slideshowNext) {
+      const slides = Array.from(slideshowTrack.querySelectorAll(".slideshow-slide"));
+      let currentSlide = 0;
 
-    if (slider && track && !reduceMotion) {
-      let position = 0;
-      let speed = 0.75;
-      let currentSpeed = speed;
-      let targetSpeed = speed;
-      let lastTime = performance.now();
-
-      const halfTrack = track.scrollWidth / 2;
-
-      const tick = (now) => {
-        const delta = (now - lastTime) / 16.67;
-        lastTime = now;
-
-        currentSpeed += (targetSpeed - currentSpeed) * 0.06;
-        position -= currentSpeed * delta;
-
-        if (Math.abs(position) >= halfTrack) {
-          position += halfTrack;
-        }
-
-        track.style.transform = `translateX(${position}px)`;
-        requestAnimationFrame(tick);
+      const renderSlide = () => {
+        slideshowTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
       };
 
-      slider.addEventListener("mouseenter", () => {
-        targetSpeed = 0;
+      slideshowPrev.addEventListener("click", () => {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        renderSlide();
       });
 
-      slider.addEventListener("mouseleave", () => {
-        targetSpeed = speed;
+      slideshowNext.addEventListener("click", () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        renderSlide();
       });
-
-      requestAnimationFrame(tick);
     }
 
     const accordionItems = document.querySelectorAll(".accordion-item");

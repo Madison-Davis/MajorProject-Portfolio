@@ -2,7 +2,7 @@ window.PORTFOLIO_DATA = {
   featuredProjects: [
     {
       highlightLabel: "Highlighted Project",
-      title: "Portfolio v2",
+      title: "SEDS",
       description:
         "A refreshed personal platform focused on clear storytelling, trust, and measurable outcomes.",
       image: "assets/images/highlight1.jpeg",
@@ -28,10 +28,30 @@ window.PORTFOLIO_DATA = {
       linkLabel: "View Project",
     },
   ],
+  highlightedProjects: [
+    {
+      title: "SEDS",
+      description: "Making space exploration in April 2026.",
+      video: "assets/images/video1.mp4",
+      link: "#",
+    },
+    {
+      title: "Phuc Laboratories",
+      description: "Water waste particle identification.",
+      video: "assets/images/video2.mp4",
+      link: "#",
+    },
+    {
+      title: "CHEETAH",
+      description: "Optimized Breeding Program For Genetic Bottlenecks",
+      video: "assets/images/video3.mp4",
+      link: "#",
+    },
+  ],
   projectGroups: [
     {
-      title: "Internships",
-      open: true,
+      title: "WORK",
+      open: false,
       rows: [
         {
           title: "Apple",
@@ -84,7 +104,7 @@ window.PORTFOLIO_DATA = {
       ],
     },
     {
-      title: "Major Projects",
+      title: "PROJECTS",
       open: false,
       rows: [
         {
@@ -108,7 +128,7 @@ window.PORTFOLIO_DATA = {
       ],
     },
     {
-      title: "Coursework",
+      title: "COURSEWORK",
       open: false,
       rows: [
         {
@@ -227,49 +247,49 @@ window.PORTFOLIO_DATA = {
     {
       title: "Adaptive Certificate Prefetching",
       summary: "Reduction of OSTP stapling soft-fails via dynamic traffic prediction.",
-      pdf: "assets/adaptive-certificate.pdf",
+      pdf: "assets/research/adaptive-certificate.pdf",
       topic: "systems",
     },
     {
       title: "SEDS HUCSat Design Dissertation",
       summary: "Capstone graduate thesis defending CubeSAT software design.",
-      pdf: "assets/seds.pdf",
+      pdf: "assets/research/seds.pdf",
       topic: "systems",
     },
     {
       title: "Compositional Diffusion Modeling",
       summary: "1B conditional diffusion models, without textual topic tuning, offer stable improvements over joint baselines.",
-      pdf: "assets/compositional-diffusion.pdf",
+      pdf: "assets/research/compositional-diffusion.pdf",
       topic: "AI/RL",
     },
     {
       title: "Sampler Conditioned Diffusion",
       summary: "Study of whether diffusion, conditioned on textual domain embedding guidance, can outperform autoregression.",
-      pdf: "assets/compositional-diffusion.pdf",
+      pdf: "assets/research/compositional-diffusion.pdf",
       topic: "AI/RL",
     },
     {
       title: "Tiered Prioritized Replay Buffer",
       summary: "For RL experiences, quantize less important transitions in replay buffers to improve sample quantity.",
-      pdf: "assets/tiered-replay-buffer.pdf",
+      pdf: "assets/research/tiered-replay-buffer.pdf",
       topic: "AI/RL",
     },
     {
       title: "Modeling Crystalline Structure with NPG",
       summary: "Determining optimial NPG, PPG, or REINFORCE methodology for complex crystalline energy structures.",
-      pdf: "assets/crystalline.pdf",
+      pdf: "assets/research/crystalline.pdf",
       topic: "AI/RL",
     },
     {
       title: "Survey on AI Energy Grid Optimization",
       summary: "Focus on smart storage, energy distribution, demand, maintenance, and security.",
-      pdf: "assets/smart-grid-optimization.pdf",
+      pdf: "assets/research/smart-grid-optimization.pdf",
       topic: "AI/RL",
     },
     {
       title: "CHEETAH: Optimized Breeding Program For Genetic Bottlenecks",
       summary: "Introduces divisive hierarhical clustering to find optimal breeding pairs in captive cheetah populations.",
-      pdf: "assets/cheetah-genetics.pdf",
+      pdf: "assets/research/cheetah-genetics.pdf",
       topic: "AI/RL",
     },
     
