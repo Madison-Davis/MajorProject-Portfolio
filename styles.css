@@ -745,7 +745,7 @@ p {
 }
 
 .accordion-item:hover {
-  transform: scale(1.03);
+  transform: none;
   border-color: var(--accordion-border-hover);
   box-shadow: var(--accordion-hover-shadow);
 }
