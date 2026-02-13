@@ -96,7 +96,8 @@
           </div>
         </div>
 
-        <div class="project-accordion reveal">
+        <div id="project-group-tabs" class="project-group-tabs reveal"></div>
+        <div class="project-accordion reveal is-collapsed">
           <div id="project-accordion-list"></div>
         </div>
       </div>
@@ -104,7 +105,7 @@
 
     <section id="publications" class="section alt reveal">
       <div class="container">
-        <h2 class="section-title">PUBLICATIONS</h2>
+        <h2 class="section-title">RESEARCH</h2>
         <p class="section-intro">
           selection of papers, notes, and writeups.
         </p>
@@ -153,7 +154,9 @@
     };
 
     const projectCardsEl = document.querySelector("#project-cards");
+    const projectGroupTabsEl = document.querySelector("#project-group-tabs");
     const projectAccordionEl = document.querySelector("#project-accordion-list");
+    const projectAccordionWrapEl = projectAccordionEl ? projectAccordionEl.closest(".project-accordion") : null;
     const publicationAccordionEl = document.querySelector("#publication-accordion-list");
     const slideshowTrack = document.querySelector(".slideshow-track");
     const slideshowPrev = document.querySelector(".slideshow-arrow-prev");
@@ -187,47 +190,85 @@
           .join("");
       }
 
-      if (projectAccordionEl) {
-        projectAccordionEl.innerHTML = data.projectGroups
+      const groups = data.projectGroups || [];
+      if (!projectAccordionEl || groups.length === 0) return;
+
+      let activeGroupIndex = null;
+
+      const renderGroupButtons = () => {
+        if (!projectGroupTabsEl) return;
+        projectGroupTabsEl.innerHTML = groups
           .map(
-            (group) => `
-              <article class="accordion-item ${group.open ? "is-open" : ""}">
-                <button class="accordion-trigger" type="button" aria-expanded="${group.open ? "true" : "false"}">
-                  ${group.title}
-                </button>
-                <div class="accordion-panel">
-                  <div class="accordion-panel-inner">
-                    <table class="accordion-table">
-                      <thead>
-                        <tr>
-                          <th>Project Title</th>
-                          <th>Year</th>
-                          <th>Description</th>
-                          <th>Link</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        ${group.rows
-                          .map(
-                            (row) => `
-                              <tr>
-                                <td>${row.title}</td>
-                                <td>${row.year}</td>
-                                <td>${row.description}</td>
-                                <td><a href="${row.link || "#"}">Link</a></td>
-                              </tr>
-                            `
-                          )
-                          .join("")}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </article>
+            (group, idx) => `
+              <button
+                class="project-group-btn ${idx === activeGroupIndex ? "is-active" : ""}"
+                type="button"
+                data-group-index="${idx}">
+                ${group.title}
+              </button>
             `
           )
           .join("");
-      }
+
+        projectGroupTabsEl.querySelectorAll(".project-group-btn").forEach((button) => {
+          button.addEventListener("click", () => {
+            const nextIndex = Number(button.dataset.groupIndex);
+            if (Number.isNaN(nextIndex)) return;
+            activeGroupIndex = nextIndex === activeGroupIndex ? null : nextIndex;
+            renderGroupButtons();
+            renderSingleGroup();
+            bindAccordionInteractions();
+          });
+        });
+      };
+
+      const renderSingleGroup = () => {
+        if (activeGroupIndex === null) {
+          if (projectAccordionWrapEl) projectAccordionWrapEl.classList.add("is-collapsed");
+          return;
+        }
+
+        const group = groups[activeGroupIndex];
+        if (projectAccordionWrapEl) projectAccordionWrapEl.classList.remove("is-collapsed");
+        projectAccordionEl.innerHTML = `
+          <article class="accordion-item is-open">
+            <button class="accordion-trigger" type="button" aria-expanded="true">
+              ${group.title}
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">
+                <table class="accordion-table">
+                  <thead>
+                    <tr>
+                      <th>Project Title</th>
+                      <th>Year</th>
+                      <th>Description</th>
+                      <th>Link</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${group.rows
+                      .map(
+                        (row) => `
+                          <tr>
+                            <td>${row.title}</td>
+                            <td>${row.year}</td>
+                            <td>${row.description}</td>
+                            <td><a href="${row.link || "#"}">Link</a></td>
+                          </tr>
+                        `
+                      )
+                      .join("")}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
+        `;
+      };
+
+      renderGroupButtons();
+      renderSingleGroup();
     };
 
     const renderPublications = () => {
@@ -355,31 +396,34 @@
       });
     }
 
-    const accordionItems = document.querySelectorAll(".accordion-item");
-    accordionItems.forEach((item) => {
-      const trigger = item.querySelector(".accordion-trigger");
-      const panel = item.querySelector(".accordion-panel");
-
-      if (!trigger || !panel) return;
-
-      if (item.classList.contains("is-open")) {
-        panel.style.maxHeight = `${panel.scrollHeight}px`;
-      }
-
-      trigger.addEventListener("click", () => {
-        const willOpen = !item.classList.contains("is-open");
-        item.classList.toggle("is-open", willOpen);
-        trigger.setAttribute("aria-expanded", String(willOpen));
-        panel.style.maxHeight = willOpen ? `${panel.scrollHeight}px` : "0px";
-      });
-    });
-
-    window.addEventListener("resize", () => {
+    const bindAccordionInteractions = () => {
+      const accordionItems = document.querySelectorAll(".accordion-item");
       accordionItems.forEach((item) => {
+        if (item.dataset.bound === "true") return;
+        const trigger = item.querySelector(".accordion-trigger");
         const panel = item.querySelector(".accordion-panel");
-        if (panel && item.classList.contains("is-open")) {
+        if (!trigger || !panel) return;
+
+        if (item.classList.contains("is-open")) {
           panel.style.maxHeight = `${panel.scrollHeight}px`;
         }
+
+        trigger.addEventListener("click", () => {
+          const willOpen = !item.classList.contains("is-open");
+          item.classList.toggle("is-open", willOpen);
+          trigger.setAttribute("aria-expanded", String(willOpen));
+          panel.style.maxHeight = willOpen ? `${panel.scrollHeight}px` : "0px";
+        });
+
+        item.dataset.bound = "true";
+      });
+    };
+
+    bindAccordionInteractions();
+
+    window.addEventListener("resize", () => {
+      document.querySelectorAll(".accordion-item.is-open .accordion-panel").forEach((panel) => {
+        panel.style.maxHeight = `${panel.scrollHeight}px`;
       });
     });
   </script>
