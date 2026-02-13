@@ -1,31 +1,25 @@
 window.PORTFOLIO_DATA = {
   featuredProjects: [
     {
-      highlightLabel: "Highlighted Project",
-      title: "SEDS",
+      title: "Compositional Diffusion Language Models",
       description:
-        "A refreshed personal platform focused on clear storytelling, trust, and measurable outcomes.",
-      image: "assets/images/highlight1.jpeg",
-      link: "#",
-      linkLabel: "View Project",
+        "2025",
+      image: "assets/images/highlight1.png",
+      link: "assets/research/sampler-conditioned-diffusion.pdf",
     },
     {
-      highlightLabel: "Highlighted Project",
-      title: "Automation Toolkit",
+      title: "PCRB Tiered Prioritized Replay Buffer",
       description:
-        "Lightweight scripts and workflows to remove repetitive tasks from daily operations.",
-      image: "assets/images/highlight2.jpg",
-      link: "#",
-      linkLabel: "View Project",
+        "2025",
+      image: "assets/images/highlight2.png",
+      link: "assets/research/tiered-replay-buffer.pdf",
     },
     {
-      highlightLabel: "Highlighted Project",
-      title: "Learning Lab",
+      title: "NPG Crystalline Reinforcement Learning",
       description:
-        "Ongoing technical experiments for frontend architecture and prompt-driven development.",
+        "2024",
       image: "assets/images/highlight3.png",
-      link: "#",
-      linkLabel: "View Project",
+      link: "assets/research/crystalline.pdf",
     },
   ],
   highlightedProjects: [
